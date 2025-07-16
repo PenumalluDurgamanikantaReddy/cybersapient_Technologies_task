@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
-    }
-  }
+      "@/components/*": ["src/components/*"],
+      "@/lib/*": ["src/lib/*"],
+      "@/app/*": ["src/app/*"],
+      "@/context/*": ["src/context/*"]
+    },
+    "jsx": "preserve"
+  },
+  "include": ["src"]
 }

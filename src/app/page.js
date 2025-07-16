@@ -5,6 +5,7 @@ import HomeScreen from "./home/page";
 
 import Rewards from './rewards/page'
 import RewardsSection from './components/Rewards'
+
 export default function Home() {
 
   return (
@@ -12,7 +13,7 @@ export default function Home() {
       
 
 
-        {/* <HomeScreen/> */}
+        <HomeScreen/>
         <Rewards/>
         {/* <Cards/> */}
 <RewardsSection/>

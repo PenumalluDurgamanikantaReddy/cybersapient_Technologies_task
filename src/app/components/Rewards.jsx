@@ -146,7 +146,7 @@ const RewardsSection = () => {
      <div ref={container}>
 
        <div>
-        <p className=" text-left  px-10  text-5xl font-semibold">Rewards</p>
+        <p className=" text-left  px-10  text-5xl font-semibold font-['Poppins']">Rewards</p>
         <p className="text-left px-10 text-base text-gray-300 mt-2">
     Earn exciting rewards and bonuses by completing tasks, collecting coins, and reaching milestones.
   </p>

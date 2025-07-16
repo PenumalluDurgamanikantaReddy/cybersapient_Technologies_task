@@ -6,10 +6,21 @@ import { HiMenuAlt3, HiOutlineUserCircle } from "react-icons/hi";
 import Image from "next/image";
 import { avatar } from "../assets";
 import ThemeSwitcher from "../utils/ThemeSwitcher";
-
+import {fetchCurrentUser} from '../../lib/user-api'
+import { useDispatch } from "react-redux";
+import {getUserData}  from '../../lib/redux/userActions'
 const Header = (props) => {
-  const { activeItem, route, setRoute, open, setOpen } = props;  
 
+  const { activeItem, route, setRoute, open, setOpen } = props;  
+  const dispatch = useDispatch()
+
+
+  const getuserDetails=()=>{
+
+     dispatch(getUserData('1'))
+  }
+
+  getuserDetails()
   const user = true;
 
   const [active, setActive] = useState(false);
@@ -47,6 +58,7 @@ useEffect(() => {
       >
         <div className="w-[95%] m-auto h-full">
           <div className="w-full h-[80px] flex items-center justify-between p-3">
+           <Link  href='/profile'>
             <Image
                     src={user.avatar ? user.avatar?.url : avatar}
                     alt=""
@@ -54,7 +66,7 @@ useEffect(() => {
                     height={40}
                     className="w-8 h-8 rounded-full"
                   />
-
+</Link>
             <div className="flex items-center ">
               <NavItems activeItem={0} isMobile={false} />
               <ThemeSwitcher />

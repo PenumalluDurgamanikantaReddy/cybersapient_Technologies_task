@@ -1,9 +1,9 @@
 import React from 'react'
-
+import HeroSection from '../components/profile/Herosection'
 const page = () => {
   return (
     <div>
-      Profile
+      <HeroSection/>
     </div>
   )
 }
