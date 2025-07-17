@@ -127,9 +127,9 @@ const cardsData = [
 
       <div
         ref={sectionRef}
-        className="stack-area w-full h-screen  flex   max-[700px]:flex-col    justify-between md:flex-row items-center  md:justify-between    relative   md:flex"
+        className="stack-area w-full h-screen  flex   max-[700px]:flex-col justify-center     md:flex-row items-center  md:justify-between    relative   md:flex"
       >
-        <div className="left h-screen flex-basis-1/2  sticky top-0 max-[700px]:left-[300px] left-0 flex items-center justify-center flex-col p-8 box-border">
+        <div className="left h-screen flex-basis-1/2 top-0   flex items-center justify-center flex-col  top-0   max-[700px]:left-[80px] max-[900px]:left-[320px] p-8 box-border relative">
           <div className="title w-[420px] text-5xl xl:text-8xl font-bold leading-[88px] ">
         Enjoy the Perks
             </div>
@@ -143,7 +143,7 @@ const cardsData = [
           </div>
         </div>
 
-<div className="right h-screen flex-basis-1/2 bg-red-400 top-0 flex items-center justify-center relative md:left-0 max-[700px]:top-[50px] max-[700px]:left-[140px] max-[900px]:left-[320px]">
+<div className="right h-screen flex-basis-1/2  top-0 flex items-center justify-center relative md:left-0 max-[700px]:top-[50px] max-[700px]:left-[140px] max-[900px]:left-[320px]">
  
 
           {cardsData.map((card, index) => (

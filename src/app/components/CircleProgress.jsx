@@ -7,12 +7,28 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import Image from 'next/image';
+import { useTheme } from 'next-themes';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const CircleProgressBar = ({ value, color, size,icon,alttext }) => {
+
+  const { theme ,systemTheme} = useTheme();
+   const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+    const currentTheme = theme === 'system' ? systemTheme : theme;
+const bgAndTextClasses = mounted
+    ? currentTheme === 'light'
+      ? ' text-white'
+      : ' text-black'
+    : 'bg-transparent text-transparent'; 
+
+
   const data = {
     datasets: [
       {
@@ -68,9 +84,8 @@ const CircleProgressBar = ({ value, color, size,icon,alttext }) => {
           fontSize: 20,
           fontWeight: 'bold',
         }}
-        className=' text-white dark:text-black'
-      >
-<p className=''>{value}%</p>
+className={`${bgAndTextClasses}`}      >
+<p className={`${bgAndTextClasses}`}>{value}%</p>
       </div>
     </div>
   );

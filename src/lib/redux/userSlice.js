@@ -7,7 +7,7 @@ import { getUserData } from "./userActions";
 
 
 const initialState={
-    isLoading:false,
+    isLoading:true,
 userData:{ }
 }
 

@@ -8,7 +8,7 @@ const SceneWrap = () => {
 
   useEffect(() => {
     const updateHeight = () => {
-      setHeight(window.innerWidth > 768 ? '100vh' : '50vh');
+      setHeight(window.innerWidth > 768 ? '100vh' : '40vh');
     };
 
     updateHeight(); 

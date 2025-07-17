@@ -7,7 +7,8 @@ const LevelProgressBar = ({
   currentXP,
   totalXPForLevel =100,
   barHeight = '18px', 
-  className = '' 
+  className = '' ,
+  
 }) => {
   const [progressWidth, setProgressWidth] = useState(40);
 

@@ -3,7 +3,7 @@
 import { useSelector } from "react-redux";
 import CircleProgress from "../CircleProgress";
 import CircleProgressBar from "../../common/components/GamificationProgressBar";
-import Skeleton from "../../../components/ui/skeleton";
+import Skeleton from "../../../components/ui/Skeleton";
 import { BiBorderRadius } from "react-icons/bi";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -60,6 +60,8 @@ const bgAndTextClasses = mounted
               size="200"
               icon={user?.avatar ? user?.avatar : null}
               alttext={"avatar"}
+                            theme={currentTheme}
+
             />
           )}
         </div>
