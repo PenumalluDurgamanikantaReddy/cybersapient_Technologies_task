@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+| Tool              | Purpose                                                                |
+| ----------------- | ---------------------------------------------------------------------- |
+| **Next.js**       | React framework for server-side rendering, routing, and app structure. |
+| **Three.js**      | 3D animations and objects rendering.                                   |
+| **Framer Motion** | Declarative animations and scroll-based transitions.                   |
+| **GSAP**          | Advanced timeline-based and scroll-triggered animations.               |
+| **Redux Toolkit** | Global state management and async API calls using `createAsyncThunk`.  |
+| **Tailwind CSS**  | Utility-first styling for responsive and consistent UI.                |
+| **next-themes**   | Theme switching between dark and light modes.                          |
+| **Chart.js**      | Data visualization through charts and doughnut graphs.                 |
+| **mockapi.io**    | Used as a mock backend for simulating API responses.                   |
+| **shadcn/ui**     | Accessible components with skeleton loading animations.                |
 
-## Getting Started
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+📦 Features
+🌗 Dark/Light Mode toggle using next-themes
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🌀 Scroll-triggered animations with GSAP and Framer Motion
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+🎥 3D visual enhancements with Three.js
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+📊 Dynamic charts built using Chart.js
 
-## Learn More
+⚙️ Redux Toolkit for API handling with createAsyncThunk
 
-To learn more about Next.js, take a look at the following resources:
+🔄 Async data fetching from mockapi.io
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+💀 Skeleton loaders for smooth UX during API load states
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+⚡ Tailwind CSS for modern responsive UI
 
-## Deploy on Vercel
+✅ Modular component structure with app/ directory (Next.js App Router)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+🧠 Author's Notes
+This project highlights skills in:
+
+Front-end architecture and component reusability
+
+Animation libraries for performance-based scroll interactions
+
+API state management using Redux Toolkit
+
+Responsive and accessible UI using Tailwind + shadcn
+
+
