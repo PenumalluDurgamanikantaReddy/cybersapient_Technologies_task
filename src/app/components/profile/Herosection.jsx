@@ -5,17 +5,30 @@ import CircleProgress from "../CircleProgress";
 import CircleProgressBar from "../../common/components/GamificationProgressBar";
 import Skeleton from "../../../components/ui/skeleton";
 import { BiBorderRadius } from "react-icons/bi";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
   const isLoading = useSelector((state) => state.user.isLoading);
   const user = useSelector((state) => {
-    return state.user.userData;
+    return state.user.userData || {};
   });
-  // console.log(user)
+  const { theme ,systemTheme} = useTheme();
+   const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+    const currentTheme = theme === 'system' ? systemTheme : theme;
+const bgAndTextClasses = mounted
+    ? currentTheme === 'light'
+      ? 'bg-black text-white'
+      : 'bg-white text-black'
+    : 'bg-transparent text-transparent'; 
   return (
     <div className=" relative w-full  flex flex-col justify-center items-center">
       {/* <Skeleton className="h-[200px] w-[200px]  "  /> */}
-      <div className="   h-[40vh] relative w-full bg-white text-black  rounded-b-[200px]">
+      <div className={`h-[40vh] relative w-full ${bgAndTextClasses}  rounded-b-[200px]`}>
         <div className=" flex flex-col justify-center items-center  absolute top-[70%] left-[10%]   ">
           {isLoading ? (
             <div
@@ -92,12 +105,12 @@ const HeroSection = () => {
         </div>
       ) : (
         <div className=" flex max-[700px]:gap-1 gap-6 max:p-3  p-8 min-[700px]:mt-8  ">
-          {Object.entries(JSON.parse(user?.earnings)).map((earing, idx) => {
-            console.log(earing);
+          {user?.earnings && Object.entries(JSON.parse(user?.earnings)).map((earing, idx) => {
+            // console.log(earing);
             return (
               <div
-                className="flex flex-col bg-white text-black rounded-md  justify-center items-center white  max-[700px]:w-[80px] max-[700px]:h-[60px]  h-[80px] w-[100px]"
-                key={idx}
+                className={`flex flex-col ${bgAndTextClasses} rounded-md  justify-center items-center white  max-[700px]:w-[80px] max-[700px]:h-[60px]  h-[80px] w-[100px]`}
+                key={idx}  
               >
                 <p className=" font-semibold text-captilize">{earing[0]}</p>
                 <p className="font-semibold">{earing[1]}</p>

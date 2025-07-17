@@ -12,7 +12,7 @@ const {scrollYProgress}=useScroll()
 
   const x = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [3, -5, 0, 4, 0]);
   const z = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0, 0, 0, 2, 0]);
-  const y = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [5, 5, -5, 6, 5]);
+  const y = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [6, 5, -5, 6, 5]);
   const Lookx = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0, 0, -0.8, 0, 0]);
   const Lookz = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0, 0, 0, 0, 0]);
   const Looky = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0, 0, 0, 0, 0]);

@@ -1,4 +1,3 @@
-import ScrollDrivenSection from "../components/offers/ScrollDrivenSection";
 
 import PraticeCard from '../components/PraticeCard'
 

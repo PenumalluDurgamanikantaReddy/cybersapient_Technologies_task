@@ -9,14 +9,10 @@ import {
 } from 'chart.js';
 import React from 'react';
 import Image from 'next/image';
-import { useSelector } from 'react-redux';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const CircleProgressBar = ({ value, color, size,icon,alttext }) => {
-
-    const isLoading = useSelector((state) => state.user.isLoading);
-
   const data = {
     datasets: [
       {
@@ -30,7 +26,7 @@ const CircleProgressBar = ({ value, color, size,icon,alttext }) => {
 
   const options = {
     rotation: -90,
-    circumference: 180 + 180, // full circle
+    circumference: 180 + 180, 
     cutout: '80%',
     responsive: false,
     plugins: {
@@ -59,9 +55,7 @@ const CircleProgressBar = ({ value, color, size,icon,alttext }) => {
           fontWeight: 'bold',
         }}
       >
-        {!isLoading &&
-        
-        <Image src={icon} width={170} height={180} alt={alttext} />}
+        {icon && <Image src={icon} width={110} height={150} alt={alttext} />}
         
       </div>
 

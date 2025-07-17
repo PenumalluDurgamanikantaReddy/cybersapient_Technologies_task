@@ -20,13 +20,14 @@ const Header = (props) => {
      dispatch(getUserData('1'))
   }
 
-  getuserDetails()
+  
   const user = true;
 
   const [active, setActive] = useState(false);
   const [openSidear, setOpenSidebar] = useState(false);
 
 useEffect(() => {
+  getuserDetails()
   const handleScroll = () => {
     setActive(window.scrollY > 85);
   };
