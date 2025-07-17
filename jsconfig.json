@@ -1,13 +1,22 @@
+// jsconfig.json
 {
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["src/components/*"],
-      "@/lib/*": ["src/lib/*"],
-      "@/app/*": ["src/app/*"],
-      "@/context/*": ["src/context/*"]
+      "@/*": [
+        "./*"
+      ]
     },
     "jsx": "preserve"
   },
-  "include": ["src"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.mjs",
+    "**/*.cjs"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
