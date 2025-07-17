@@ -4,7 +4,7 @@ export default function ProgressBar({color,value}) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => setProgress(value)); // Animate after initial render
+    setTimeout(() => setProgress(value)); 
   }, []);
 
   console.log(color)

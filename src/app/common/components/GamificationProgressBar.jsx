@@ -1,4 +1,3 @@
-// components/LevelProgressBar.jsx
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -16,7 +15,7 @@ const LevelProgressBar = ({
   const clampedPercentage = Math.max(0, Math.min(100, rawPercentage));
 
   useEffect(() => {
-    // setProgressWidth(clampedPercentage);
+    setProgressWidth(clampedPercentage);
   }, [clampedPercentage]); 
 
   return (
@@ -28,10 +27,9 @@ const LevelProgressBar = ({
         className="absolute top-0 left-0 h-full rounded-md"
         style={{
           width: `${progressWidth}%`,
-          // This creates the yellow-orange split effect.
-          // You might need to adjust the percentages based on your desired visual.
-          background: `linear-gradient(to right, #FFD700 0%, #FFD700 60%, #FF8C00 100%)`, // Yellow to Orange gradient
-          transition: 'width 0.8s ease-out', // Smooth animation for width change
+         
+          background: `linear-gradient(to right, #FFD700 0%, #FFD700 60%, #FF8C00 100%)`, 
+          transition: 'width 0.8s ease-out',
         }}
       ></div>
     </div>

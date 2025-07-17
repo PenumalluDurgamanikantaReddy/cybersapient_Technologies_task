@@ -2,25 +2,7 @@
 import Link from "next/link";
 import React, { FC } from "react";
 
-export const navitems = [
-
-//   {
-//     name: "Courses",
-//     url: "/courses",
-//   },
-//   {
-//     name: "About",
-//     url: "/about",
-//   },
-//   {
-//     name: "Policy",
-//     url: "/policy",
-//   },
-//   {
-//     name: "FAQ",
-//     url: "/faq",
-//   },
-];
+export const navitems = [];
 
 const NavItems = (props) => {
   const { activeItem, isMobile } = props;
