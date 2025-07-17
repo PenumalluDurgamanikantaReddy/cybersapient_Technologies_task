@@ -143,16 +143,16 @@ const RewardsSection = () => {
 
 
   return(
-     <div ref={container} className=" w-full">
+     <div ref={container} className=" w-full  mx-auto min-[700px]:px-6 lg:px-6">
 
-        <div className="max-w-7xl mx-auto min-[700px]:px-6 lg:px-8"> {/* Consistent horizontal padding */}
+        <div className=""> {/* Consistent horizontal padding */}
         <p className=" text-left  px-10  text-5xl font-semibold font-['Poppins']">Rewards</p>
-        <p className="text-left px-10 text-base text-gray-300 mt-2">
+        <p className="text-left px-10 text-base  mt-2">
     Earn exciting rewards and bonuses by completing tasks, collecting coins, and reaching milestones.
   </p>
     </div>
 
-<div className="flex bg-red-400 flex-col gap-6 items-center md:flex-row md:justify-around lg:justify-around px-6 py-8">
+<div className="flex  flex-col gap-6 items-center md:flex-row md:justify-around lg:justify-between px-6 py-8">
      
         {
           RewardsMissions?.map((cardDetails)=>{
