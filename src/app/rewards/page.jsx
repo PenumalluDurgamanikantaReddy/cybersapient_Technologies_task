@@ -3,7 +3,7 @@ import PraticeCard from '../components/PraticeCard'
 
 const Index = () => {
   return (
-    <div className="w-full">
+    <div className="w-full max-screen">
 
      <PraticeCard/>
     </div>

@@ -143,7 +143,7 @@ const mobileX = useTransform(
 
 <div className="sticky top-0 h-[50%]  flex items-start overflow-hidden" ref={rewardsContainerRef}>
         <motion.div
-    className="flex gap-6 relative left-[30%] px-4"
+    className="flex gap-10 relative left-[30%] px-4"
     style={{
       x: mobileX 
     }}

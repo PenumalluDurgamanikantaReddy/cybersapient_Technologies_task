@@ -3,7 +3,7 @@
 import { useState } from "react";
 import HomeScreen from "./home/page";
 
-import Rewards from './rewards/page'
+import Offers from './rewards/page'
 import RewardsSection from './components/Rewards'
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
 
 
         <HomeScreen/>
-        <Rewards/>
+        <Offers/>
         {/* <Cards/> */}
 <RewardsSection/>
    

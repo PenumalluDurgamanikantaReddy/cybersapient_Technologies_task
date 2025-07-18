@@ -129,11 +129,11 @@ const cardsData = [
         ref={sectionRef}
         className="stack-area w-full h-screen  flex   max-[700px]:flex-col justify-center     md:flex-row items-center  md:justify-between    relative   md:flex"
       >
-        <div className="left h-screen flex-basis-1/2 top-0   flex items-center justify-center flex-col  top-0   max-[700px]:left-[80px] max-[900px]:left-[320px] p-8 box-border relative">
-          <div className="title w-[420px] text-5xl xl:text-8xl font-bold leading-[88px] ">
+        <div className="left h-screen flex-basis-1/2 top-0   flex items-center justify-center flex-col  top-0   max-[700px]:left-[60px] max-[900px]:left-[320px] p-8 box-border relative">
+          <div className="title  w-[220px] md:w-[340px]  md:w-[420px] text-3xl md:text-5xl xl:text-8xl font-bold leading-[88px] ">
         Enjoy the Perks
             </div>
-          <div className="sub-title w-[420px] text-sm mt-8 text-gray-700">
+          <div className="sub-title md:w-[420px] text-sm md:mt-8 text-gray-700">
                Discover the exclusive advantages and rewards waiting for you. We've crafted a range of benefits, from special discounts to personalized offers, to enhance your experience and give you more value.
 
             <br />

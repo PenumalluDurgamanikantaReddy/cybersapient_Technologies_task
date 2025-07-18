@@ -29,7 +29,7 @@ const bgAndTextClasses = mounted
     <div className=" relative w-full  flex flex-col justify-center items-center">
       {/* <Skeleton className="h-[200px] w-[200px]  "  /> */}
       <div className={`h-[40vh] relative w-full ${bgAndTextClasses}  rounded-b-[200px]`}>
-        <div className=" flex flex-col justify-center items-center  absolute top-[70%] left-[10%]   ">
+        <div className=" flex flex-col justify-center items-center  absolute top-[70%]  max-[400px]:left-[10%] left-[15%]   ">
           {isLoading ? (
             <div
             style={{
