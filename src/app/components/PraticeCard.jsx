@@ -13,47 +13,64 @@ const StackCardsSection = () => {
 const [activeCardIndex, setActiveCardIndex] = useState(0);
 
   
-const cardsData = [
-  {
-    id: 1,
-    title: "Exclusive Discounts",
-    icon: "discount-icon", 
-    description: "Enjoy special savings on a wide range of products and services.",
-    ctaText: "Claim Now",
-    bgColor: "rgb(64, 122, 255)" ,
-     content: "Unlock Big Savings"
-  },
-  {
-    id: 2,
-    title: "Special Offers",
-    icon: "offer-icon", 
-    description: "Access limited-time offers tailored just for you.",
-    ctaText: "View Offers",
-    bgColor: "rgb(221, 62, 88)", 
-         content: "Unlock Big Savings"
-
-  },
-  {
-    id: 3,
-    title: "Gift Vouchers",
-    icon: "voucher-icon", 
-    description: "Redeem exciting gift vouchers from your favorite brands.",
-    ctaText: "Get Voucher",
-    bgColor: "rgb(186, 113, 245)",
-         content: "Unlock Big Savings"
-
-  },
-  {
-    id: 4,
-    title: "Priority Support",
-    icon: "support-icon", 
-    description: "Receive 24/7 priority support for all your queries.",
-    ctaText: "Contact Us",
-    bgColor: "rgb(247, 92, 208)", 
-         content: "Unlock Big Savings"
-
-  }
-];
+  const cardsData = [
+    {
+      id: 1,
+      title: "Exclusive Discounts",
+      icon: "🎯",
+      description: "Enjoy special savings on products with our premium membership benefits.",
+      ctaText: "Claim Now",
+      bgColor: "rgb(64, 122, 255)",
+      leftContent: {
+        title: "Unlock Big Savings",
+        subtitle: "Premium Discounts Await",
+        description: "Experience exclusive discounts tailored for premium members. Save up to 40% on your favorite brands and services.",
+        highlight: "Up to 40% Off"
+      }
+    },
+    {
+      id: 2,
+      title: "Special Offers",
+      icon: "⚡",
+      description: "Access limited-time offers tailored just for you with personalized recommendations.",
+      ctaText: "View Offers",
+      bgColor: "rgb(221, 62, 88)",
+      leftContent: {
+        title: "Limited Time Magic",
+        subtitle: "Personalized Just for You",
+        description: "Discover offers crafted specifically for your preferences. Each deal is carefully selected to match your interests.",
+        highlight: "Personalized Deals"
+      }
+    },
+    {
+      id: 3,
+      title: "Gift Vouchers",
+      icon: "🎁",
+      description: "Redeem exciting gift vouchers from your favorite brands and share them with loved ones.",
+      ctaText: "Get Voucher",
+      bgColor: "rgb(186, 113, 245)",
+      leftContent: {
+        title: "Gift the Experience",
+        subtitle: "Vouchers & More",
+        description: "Share the joy with premium gift vouchers. Perfect for special occasions and showing you care.",
+        highlight: "Premium Vouchers"
+      }
+    },
+    {
+      id: 4,
+      title: "Priority Support",
+      icon: "💎",
+      description: "Receive 24/7 priority support for all your queries with dedicated expert assistance.",
+      ctaText: "Contact Us",
+      bgColor: "rgb(247, 92, 208)",
+      leftContent: {
+        title: "Always Here for You",
+        subtitle: "24/7 Premium Support",
+        description: "Get instant help from our dedicated support team. Your success is our priority, anytime you need us.",
+        highlight: "24/7 Available"
+      }
+    }
+  ];
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -129,7 +146,7 @@ const cardsData = [
         ref={sectionRef}
         className="stack-area w-full h-screen  flex   max-[700px]:flex-col justify-center     md:flex-row items-center  md:justify-between    relative   md:flex"
       >
-        <div className="left h-screen flex-basis-1/2 top-0   flex items-center justify-center flex-col  top-0   max-[700px]:left-[60px] max-[900px]:left-[320px] p-8 box-border relative">
+        <div className="left h-screen flex-basis-1/2 top-0   flex items-center justify-center flex-col  top-0   max-[700px]:left-[40px] max-[900px]:left-[320px] p-8 box-border relative">
           <div className="title  w-[220px] md:w-[340px]  md:w-[420px] text-3xl md:text-5xl xl:text-8xl font-bold leading-[88px] ">
         Enjoy the Perks
             </div>
@@ -158,8 +175,8 @@ const cardsData = [
                 
               }}
             >
-              <div className="sub text-xl font-bold">{card.title}</div>
-              <div className="content text-4xl  max-[900px]:text-lg  max-[900px]:leading-[25px] font-bold leading-[54px]">{card.description}</div>
+              <div className="sub text-xl font-bold">{card.icon}{card.title}</div>
+              <div className="content text-4xl  max-[900px]:text-lg  max-[900px]:leading-[25px] font-bold leading-[44px]">{card.description}</div>
             </div>
           ))}
         </div>
