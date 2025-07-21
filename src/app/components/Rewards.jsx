@@ -4,23 +4,23 @@ import { useEffect, useRef, useState } from "react"
 import { useInView } from "framer-motion"
 import Image from "next/image";
 import ProgressChart from "../common/components/ProgressBar";
-import RewardCard from './RewardCard' 
-import Lenis from "@studio-freight/lenis"; 
+import RewardCard from './RewardCard'
+import Lenis from "@studio-freight/lenis";
 
 const RewardsSection = () => {
-    const sectionRef = useRef(null); 
+    const sectionRef = useRef(null);
     const rewardsContainerRef = useRef(null);
-    const inView = useInView(sectionRef, { once: true }); 
+    const inView = useInView(sectionRef, { once: true });
     const controls = useAnimation();
 
     const { scrollYProgress } = useScroll({
         target: sectionRef,
-        offset: ['start start', 'end end'] 
+        offset: ['start start', 'end end']
     });
     const [isMobile, setIsMobile] = useState(false);
 
     const [scrollWidth, setScrollWidth] = useState(0);
-   const RewardsMissions = [
+    const RewardsMissions = [
         {
             task: "Missions",
             subtitle: "Rewards",
@@ -67,20 +67,20 @@ const RewardsSection = () => {
         window.addEventListener('resize', handleResize);
 
         return () => window.removeEventListener('resize', handleResize);
-    }, []); 
-    
+    }, []);
+
     useEffect(() => {
         if (isMobile && rewardsContainerRef.current) {
             const container = rewardsContainerRef.current;
-            const cardElement = container.querySelector('.reward-card-item'); 
-            
+            const cardElement = container.querySelector('.reward-card-item');
+
             if (cardElement) {
-                const cardWidth = cardElement.offsetWidth; 
-                const gap = 40; 
-                const paddingX = 16; 
+                const cardWidth = cardElement.offsetWidth;
+                const gap = 40;
+                const paddingX = 16;
 
                 const contentWidth = (cardWidth * RewardsMissions.length) + (gap * (RewardsMissions.length - 1));
-                
+
                 const visibleContainerWidth = container.offsetWidth;
 
                 const initialOffset = (visibleContainerWidth / 2) - (cardWidth / 2);
@@ -89,25 +89,25 @@ const RewardsSection = () => {
 
 
                 if (maxScrollDistance > 0) {
-                    setScrollWidth(-maxScrollDistance); 
+                    setScrollWidth(-maxScrollDistance);
                 } else {
-                    setScrollWidth(0); 
+                    setScrollWidth(0);
                 }
             }
         }
-    }, [isMobile, RewardsMissions.length]); 
+    }, [isMobile, RewardsMissions.length]);
 
     const initialStackOffset = 20;
-    const spreadDistance = 400; 
+    const spreadDistance = 400;
 
     const cardTransforms = RewardsMissions.map((_, index) => {
         const numCards = RewardsMissions.length;
-        
-        const animationStart = index * (0.15); 
-        const animationEnd = animationStart + 0.4; 
+
+        const animationStart = index * (0.15);
+        const animationEnd = animationStart + 0.4;
 
         let initialX = (index - (numCards - 1) / 2) * initialStackOffset;
-        let finalX = (index - (numCards - 1) / 2) * spreadDistance; 
+        let finalX = (index - (numCards - 1) / 2) * spreadDistance;
 
         const x = useTransform(scrollYProgress,
             [0, animationStart, animationEnd],
@@ -116,11 +116,11 @@ const RewardsSection = () => {
 
         const scale = useTransform(scrollYProgress,
             [0, animationStart, animationEnd],
-            [0.9, 0.9, 1] 
+            [0.9, 0.9, 1]
         );
 
         const opacity = useTransform(scrollYProgress,
-            [0, 0.1], 
+            [0, 0.1],
             [0, 1]
         );
 
@@ -129,11 +129,11 @@ const RewardsSection = () => {
 
     const mobileX = useTransform(
         scrollYProgress,
-        [0, 1], 
-        [0, scrollWidth], 
+        [0, 1],
+        [0, scrollWidth],
         { clamp: true }
     );
-    
+
     useEffect(() => {
         const lenis = new Lenis();
         function raf(time) {
@@ -149,30 +149,77 @@ const RewardsSection = () => {
         }
     }, [controls, inView]);
 
- 
+
+
+    const titleAnimation = {
+        hidden: { opacity: 0, scale: 0.5 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                type: "spring",
+                damping: 12,
+                stiffness: 120
+            }
+        }
+    };
+
+    const descriptionAnimation = {
+        hidden: { opacity: 0, scale: 0.5 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                type: "spring",
+                damping: 12,
+                stiffness: 120,
+                delay: 0.2,
+            }
+        }
+    };
+
 
     return (
         <div ref={sectionRef} className={`w-full mx-auto min-[700px]:px-6 lg:px-6 relative h-[150vh] md:h-[300vh]`}>
-            <div className="sticky top-0 w-full h-screen flex flex-col justify-center items-center overflow-hidden"> 
-                <div className="w-full flex flex-col justify-center items-center px-6 md:px-10 mb-10"> 
-                    <p className="text-left text-5xl font-semibold font-['Poppins'] ">Rewards</p>
-                    <p className="text-left text-base mt-2 text-gray-600">
+            <div className="sticky top-0 w-full h-screen flex flex-col justify-center items-center overflow-hidden">
+                <motion.div
+                    className="w-full flex flex-col justify-center items-center px-6 md:px-10 mb-10"
+                    initial="hidden"
+                    animate={inView ? "visible" : "hidden"}
+                    variants={{
+                        visible: {
+                            transition: {
+                                staggerChildren: 0.2 
+                            }
+                        }
+                    }}
+                >
+                    <motion.p
+                        className="text-left text-5xl font-semibold font-['Poppins']"
+                        variants={titleAnimation}
+                    >
+                        Rewards
+                    </motion.p>
+                    <motion.p
+                        className="text-left text-base mt-2 text-gray-600"
+                        variants={descriptionAnimation}
+                    >
                         Earn exciting rewards and bonuses by completing tasks, collecting coins, and reaching milestones.
-                    </p>
-                </div>
+                    </motion.p>
+                </motion.div>
 
                 {isMobile ? (
                     <div className="relative h-[50%] w-full flex justify-start items-start overflow-hidden" ref={rewardsContainerRef}>
                         <motion.div
-                            className="flex gap-10 px-4" 
+                            className="flex gap-10 px-4"
                             style={{
                                 x: mobileX,
                             }}
                         >
                             {RewardsMissions.map((cardDetails, index) => (
-                                <div 
-                                    key={cardDetails.task} 
-                                    className="flex-shrink-0 w-[80vw] max-w-[300px] reward-card-item" 
+                                <div
+                                    key={cardDetails.task}
+                                    className="flex-shrink-0 w-[80vw] max-w-[300px] reward-card-item"
                                 >
                                     <RewardCard cardDetails={cardDetails} />
                                 </div>
@@ -182,7 +229,7 @@ const RewardsSection = () => {
                 ) : (
                     <div
                         ref={rewardsContainerRef}
-                        className="relative flex justify-center  items-center w-full h-[400px]" 
+                        className="relative flex justify-center  items-center w-full h-[400px]"
                     >
                         {RewardsMissions?.map((cardDetails, index) => {
                             const { x, scale, opacity } = cardTransforms[index];
@@ -191,17 +238,17 @@ const RewardsSection = () => {
                                     key={cardDetails?.task}
                                     style={{
                                         position: 'absolute',
-                                        x, 
+                                        x,
                                         scale,
                                         opacity,
-                                        zIndex: RewardsMissions.length - index, 
+                                        zIndex: RewardsMissions.length - index,
                                     }}
-                                    initial={{ opacity: 0, scale: 0.8 }} 
+                                    initial={{ opacity: 0, scale: 0.8 }}
                                     animate={controls}
                                     variants={{
                                         visible: { opacity: 1, scale: 1, transition: { duration: 0.5, delay: index * 0.1 } },
                                     }}
-                                    className="w-full max-w-[350px] md:max-w-[300px] lg:max-w-[380px] origin-center" 
+                                    className="w-full max-w-[350px] md:max-w-[300px] lg:max-w-[380px] origin-center"
                                 >
                                     <RewardCard cardDetails={cardDetails} />
                                 </motion.div>
