@@ -6,11 +6,11 @@ export const getUserData = createAsyncThunk(
 
   async ({ userId }) => {
     const url =
-      "https://68779c2bdba809d901f02a3e.mockapi.io/cyberspaient/user/1";
+      `https://68779c2bdba809d901f02a3e.mockapi.io/cyberspaient/user/${userId}`;
 
     try {
       const response = await fetch(
-        "https://68779c2bdba809d901f02a3e.mockapi.io/cyberspaient/user/1",
+        `https://68779c2bdba809d901f02a3e.mockapi.io/cyberspaient/user/${userId}`,
         { method: "GET", cache: "no-store" }
       );
       if (!response.ok) {

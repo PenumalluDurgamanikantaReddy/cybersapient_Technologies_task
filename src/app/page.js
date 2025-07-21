@@ -13,9 +13,8 @@ export default function Home() {
       
 
 
-        {/* <HomeScreen/> */}
+        <HomeScreen/>
         <Offers/>
-        {/* <Cards/> */}
       
 <RewardsSection/>
    

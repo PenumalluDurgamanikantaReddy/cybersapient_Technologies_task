@@ -17,6 +17,7 @@
     "@react-three/fiber": "^9.2.0",
     "@react-three/rapier": "^2.1.0",
     "@reduxjs/toolkit": "^2.8.2",
+    "@splinetool/react-spline": "^4.1.0",
     "@studio-freight/lenis": "^1.0.42",
     "chart.js": "^4.5.0",
     "class-variance-authority": "^0.7.1",

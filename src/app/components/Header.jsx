@@ -2,6 +2,8 @@
 import Link from "next/link";
 import React, { FC, useState,useEffect } from "react";
 import NavItems from "../utils/NavItems";
+import { usePathname } from 'next/navigation';
+
 import { HiMenuAlt3, HiOutlineUserCircle } from "react-icons/hi";
 import Image from "next/image";
 import { avatar } from "../assets";
@@ -17,7 +19,7 @@ const Header = (props) => {
 
   const getuserDetails=()=>{
 
-     dispatch(getUserData('1'))
+     dispatch(getUserData({userId:'1'}))
   }
 
   
@@ -26,6 +28,10 @@ const Header = (props) => {
   const [active, setActive] = useState(false);
   const [openSidear, setOpenSidebar] = useState(false);
 
+
+  const pathname = usePathname();
+
+  console.log(pathname)
 useEffect(() => {
   getuserDetails()
   const handleScroll = () => {
@@ -59,6 +65,9 @@ useEffect(() => {
       >
         <div className="w-[95%] m-auto h-full">
           <div className="w-full h-[80px] flex items-center justify-between p-3">
+
+            {
+              pathname === '/' ?
            <Link  href='/profile'>
             <Image
                     src={user.avatar ? user.avatar?.url : avatar}
@@ -68,6 +77,19 @@ useEffect(() => {
                     className="w-8 h-8 rounded-full"
                   />
 </Link>
+
+              :
+                         <Link  href='/'>
+            <Image
+                    src='https://cdn-icons-png.flaticon.com/512/60/60789.png'
+                    alt=""
+                    width={40}
+                    height={40}
+                    className="w-8 h-8 bg-white rounded-full"
+                  />
+</Link>
+            }
+
             <div className="flex items-center ">
               <NavItems activeItem={0} isMobile={false} />
               <ThemeSwitcher />

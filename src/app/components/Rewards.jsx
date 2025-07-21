@@ -17,19 +17,10 @@ const RewardsSection = () => {
         target: sectionRef,
         offset: ['start start', 'end end'] 
     });
-const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
-useEffect(() => {
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 768);
-  };
-
-  handleResize();
-  window.addEventListener('resize', handleResize);
-
-  return () => window.removeEventListener('resize', handleResize);
-}, []);    
-    const RewardsMissions = [
+    const [scrollWidth, setScrollWidth] = useState(0);
+   const RewardsMissions = [
         {
             task: "Missions",
             subtitle: "Rewards",
@@ -67,23 +58,57 @@ useEffect(() => {
             icon: 'https://cdn-icons-png.flaticon.com/512/599/599416.png'
         },
     ];
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 1024);
+        };
 
-    // desktop 
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []); 
+    
+    useEffect(() => {
+        if (isMobile && rewardsContainerRef.current) {
+            const container = rewardsContainerRef.current;
+            const cardElement = container.querySelector('.reward-card-item'); 
+            
+            if (cardElement) {
+                const cardWidth = cardElement.offsetWidth; 
+                const gap = 40; 
+                const paddingX = 16; 
+
+                const contentWidth = (cardWidth * RewardsMissions.length) + (gap * (RewardsMissions.length - 1));
+                
+                const visibleContainerWidth = container.offsetWidth;
+
+                const initialOffset = (visibleContainerWidth / 2) - (cardWidth / 2);
+
+                const maxScrollDistance = (contentWidth - visibleContainerWidth) + initialOffset;
+
+
+                if (maxScrollDistance > 0) {
+                    setScrollWidth(-maxScrollDistance); 
+                } else {
+                    setScrollWidth(0); 
+                }
+            }
+        }
+    }, [isMobile, RewardsMissions.length]); 
 
     const initialStackOffset = 20;
     const spreadDistance = 400; 
 
     const cardTransforms = RewardsMissions.map((_, index) => {
         const numCards = RewardsMissions.length;
-       
+        
         const animationStart = index * (0.15); 
         const animationEnd = animationStart + 0.4; 
 
-     
         let initialX = (index - (numCards - 1) / 2) * initialStackOffset;
         let finalX = (index - (numCards - 1) / 2) * spreadDistance; 
 
-       
         const x = useTransform(scrollYProgress,
             [0, animationStart, animationEnd],
             [initialX, initialX, finalX]
@@ -102,16 +127,13 @@ useEffect(() => {
         return { x, scale, opacity };
     });
 
-
-
-  // mobile
-  
-const mobileX = useTransform(
-  scrollYProgress,
-  Array.from({ length: RewardsMissions.length }, (_, i) => i / (RewardsMissions.length - 1)),
-  Array.from({ length: RewardsMissions.length }, (_, i) => `${-i * 100}%`),
-  { clamp: true } 
-);
+    const mobileX = useTransform(
+        scrollYProgress,
+        [0, 1], 
+        [0, scrollWidth], 
+        { clamp: true }
+    );
+    
     useEffect(() => {
         const lenis = new Lenis();
         function raf(time) {
@@ -127,70 +149,66 @@ const mobileX = useTransform(
         }
     }, [controls, inView]);
 
+ 
+
     return (
-        <div ref={sectionRef} className="w-full mx-auto min-[700px]:px-6 lg:px-6 relative h-[150vh] md:h-[300vh]">
-            <div className="sticky top-0 w-full h-screen flex flex-col justify-center items-center overflow-hidden"> {/* Added overflow-hidden to prevent scrollbars during initial position */}
-                <div className="w-full   flex flex-col justify-center items-center px-6 md:px-10 mb-10"> {/* Adjusted margin-bottom */}
+        <div ref={sectionRef} className={`w-full mx-auto min-[700px]:px-6 lg:px-6 relative h-[150vh] md:h-[300vh]`}>
+            <div className="sticky top-0 w-full h-screen flex flex-col justify-center items-center overflow-hidden"> 
+                <div className="w-full flex flex-col justify-center items-center px-6 md:px-10 mb-10"> 
                     <p className="text-left text-5xl font-semibold font-['Poppins'] ">Rewards</p>
                     <p className="text-left text-base mt-2 text-gray-600">
                         Earn exciting rewards and bonuses by completing tasks, collecting coins, and reaching milestones.
                     </p>
                 </div>
 
-
-{
-  isMobile ?
-
-<div className="sticky top-0 h-[50%]  flex items-start overflow-hidden" ref={rewardsContainerRef}>
-        <motion.div
-    className="flex gap-10 relative left-[31%] px-4"
-    style={{
-      x: mobileX 
-    }}
-  >
-          {RewardsMissions.map((cardDetails, index) => (
-            
-              <div
-        key={cardDetails.task}
-        className="flex-shrink-0 w-[80vw] max-w-[300px]" 
-      >
-                                           <RewardCard cardDetails={cardDetails}  />
-
-          </div>
-          ))}
-        </motion.div>
-      </div>
-
-  :
-
-                <div
-                    ref={rewardsContainerRef}
-                    className="relative flex justify-center items-center w-full h-[400px]" 
-                >
-                    {RewardsMissions?.map((cardDetails, index) => {
-                        const { x, scale, opacity } = cardTransforms[index];
-                        return (
-                            <motion.div
-                                key={cardDetails?.task}
-                                style={{
-                                    position: 'absolute',
-                                    x, 
-                                    scale,
-                                    opacity,
-                                    zIndex: RewardsMissions.length - index, 
-                                }}
-                                initial={{ opacity: 0, scale: 0.8 }} 
-                                animate={controls}
-                                variants={{
-                                    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, delay: index * 0.1 } },
-                                }}
-                                className="w-full max-w-[350px] md:max-w-[300px] lg:max-w-[380px] origin-center" 
-                            >
-                                <RewardCard cardDetails={cardDetails} />
-                            </motion.div>
-                        );
-                    })}
-                </div>}
+                {isMobile ? (
+                    <div className="relative h-[50%] w-full flex justify-start items-start overflow-hidden" ref={rewardsContainerRef}>
+                        <motion.div
+                            className="flex gap-10 px-4" 
+                            style={{
+                                x: mobileX,
+                            }}
+                        >
+                            {RewardsMissions.map((cardDetails, index) => (
+                                <div 
+                                    key={cardDetails.task} 
+                                    className="flex-shrink-0 w-[80vw] max-w-[300px] reward-card-item" 
+                                >
+                                    <RewardCard cardDetails={cardDetails} />
+                                </div>
+                            ))}
+                        </motion.div>
+                    </div>
+                ) : (
+                    <div
+                        ref={rewardsContainerRef}
+                        className="relative flex justify-center  items-center w-full h-[400px]" 
+                    >
+                        {RewardsMissions?.map((cardDetails, index) => {
+                            const { x, scale, opacity } = cardTransforms[index];
+                            return (
+                                <motion.div
+                                    key={cardDetails?.task}
+                                    style={{
+                                        position: 'absolute',
+                                        x, 
+                                        scale,
+                                        opacity,
+                                        zIndex: RewardsMissions.length - index, 
+                                    }}
+                                    initial={{ opacity: 0, scale: 0.8 }} 
+                                    animate={controls}
+                                    variants={{
+                                        visible: { opacity: 1, scale: 1, transition: { duration: 0.5, delay: index * 0.1 } },
+                                    }}
+                                    className="w-full max-w-[350px] md:max-w-[300px] lg:max-w-[380px] origin-center" 
+                                >
+                                    <RewardCard cardDetails={cardDetails} />
+                                </motion.div>
+                            );
+                        })}
+                    </div>
+                )}
             </div>
         </div>
     );

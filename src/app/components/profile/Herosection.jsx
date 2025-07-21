@@ -28,6 +28,38 @@ const bgAndTextClasses = mounted
   return (
     <div className=" relative w-full  flex flex-col justify-center items-center">
       {/* <Skeleton className="h-[200px] w-[200px]  "  /> */}
+
+      {
+        isLoading ?
+        <Skeleton
+        className={`h-[40vh] relative w-full   rounded-b-[200px]`}
+        >
+        <div className=" flex flex-col justify-center items-center  absolute top-[70%]  max-[400px]:left-[10%] left-[15%]   ">
+ <div
+            style={{
+      
+        position: 'relative',
+        display: 'inline-block',
+      }}>
+        <div
+        style={{
+          position: 'relative',
+          bottom: '2rem',
+          left: '25%',
+          // transform: 'translate(-50%, -50%)',
+          fontSize: 20,
+          fontWeight: 'bold',
+        }}
+      >
+              <Skeleton
+                className="h-[200px] w-[200px] rounded-[50px]"
+                style={{ borderRadius: "50%" }}
+              />
+            </div>
+             </div>
+</div>          
+        </Skeleton>:
+      
       <div className={`h-[40vh] relative w-full ${bgAndTextClasses}  rounded-b-[200px]`}>
         <div className=" flex flex-col justify-center items-center  absolute top-[70%]  max-[400px]:left-[10%] left-[15%]   ">
           {isLoading ? (
@@ -65,7 +97,10 @@ const bgAndTextClasses = mounted
             />
           )}
         </div>
-      </div>
+      </div>}
+
+
+
       {isLoading ? (
         <div className=" max-[700px]:mt-28 min-[700px]:mt-8  justify-center  md:w-[70%] md:items-center flex-col md:flex md:flex-row md:gap-2 gap-6  flex font-['Poppins']">
           <Skeleton className=" h-10 text-2xl min-[800px]:text-5 xl md:mt-22 w-full" />
@@ -84,8 +119,8 @@ const bgAndTextClasses = mounted
           </p>
 
           <div className=" flex flex-col  items-center  md:flex-row md:justify-between w-full">
-            <div className=" flex justify-center items-center">
-              <p className=" md:text-2xl">
+            <div className=" flex  justify-between  gap-4 pr-4 items-center">
+              <p className="md:w-max md:text-2xl">
                 Level {user?.level} / {user?.totalLevels}
               </p>
             </div>

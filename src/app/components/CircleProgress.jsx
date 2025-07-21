@@ -24,9 +24,10 @@ const CircleProgressBar = ({ value, color, size,icon,alttext }) => {
     const currentTheme = theme === 'system' ? systemTheme : theme;
 const bgAndTextClasses = mounted
     ? currentTheme === 'light'
-      ? ' text-white'
-      : ' text-black'
+      ? ' text-black'
+      : ' text-white'
     : 'bg-transparent text-transparent'; 
+
 
 
   const data = {
@@ -84,7 +85,7 @@ const bgAndTextClasses = mounted
           fontSize: 20,
           fontWeight: 'bold',
         }}
-className={`${bgAndTextClasses}`}      >
+      >
 <p className={`${bgAndTextClasses}`}>{value}%</p>
       </div>
     </div>

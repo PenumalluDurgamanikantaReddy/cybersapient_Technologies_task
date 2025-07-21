@@ -190,8 +190,7 @@ const StackCardsSection = () => {
         ref={sectionRef}
         className="stack-area w-full h-screen flex max-[700px]:flex-col justify-center md:flex-row items-center md:justify-between relative md:flex"
       >
-        {/* Left Side: Framer Motion for content transitions */}
-        <div className="left h-screen left-side-text-cards flex-basis-1/2 top-0 flex items-center justify-center flex-col max-[700px]:left-[40px] max-[900px]:left-[320px] p-8 box-border relative">
+        <div className="left h-screen left-side-text-cards flex-basis-1/2 top-0 flex items-center justify-center flex-col max-[700px]:left-[40px] max-[900px]:left-[20px] p-8 box-border relative">
           <AnimatePresence initial={false} mode='wait'>
             {cardsData[activeCardIndex] && (
               <motion.div
@@ -208,10 +207,10 @@ const StackCardsSection = () => {
                   left: 'calc(50% - 175px)',
                 }}
               >
-                <div className="title w-[220px] md:w-[340px] md:w-[420px] text-3xl md:text-5xl xl:text-8xl font-bold leading-[88px] ">
+                <div className="title w-[180px] md:w-[340px] md:w-[420px] text-3xl lg:text-5xl xl:text-8xl font-bold leading-[30px] md:leading-[88px] ">
                   {cardsData[activeCardIndex].leftContent.title}
                 </div>
-                <div className="sub-title md:w-[420px] text-sm md:mt-8 text-gray-700">
+                <div className="sub-title w-fit sm:w-[300px] lg:w-[420px] text-sm lg:mt-8 text-gray-700">
                   {cardsData[activeCardIndex].leftContent.description}
                   <br />
                   <button className="mt-5 px-8 py-4 bg-black text-white rounded-full border-none outline-none cursor-pointer text-sm">
@@ -223,8 +222,8 @@ const StackCardsSection = () => {
           </AnimatePresence>
         </div>
 
-        {/* Right Side: GSAP for stacking card animation */}
-        <div className="right right-side-cards h-screen flex-basis-1/2 top-0 flex items-center justify-center relative md:left-0 max-[700px]:top-[50px] max-[700px]:left-[150px] max-[900px]:left-[320px]">
+        
+        <div className="right right-side-cards h-screen flex-basis-1/2 top-0 flex items-center justify-center relative md:left-0 max-[700px]:top-[50px] max-[900px]:top-[70px] max-[700px]:left-[150px] max-[900px]:left-[40%]">
           {cardsData.map((card, index) => (
             <div
               key={card.id}
