@@ -45,4 +45,6 @@ API state management using Redux Toolkit
 
 Responsive and accessible UI using Tailwind + shadcn
 
+live link : https://cybersapient-technologies-task-k8ouwy6j0.vercel.app/
+
 
