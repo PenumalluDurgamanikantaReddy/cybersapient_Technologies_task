@@ -56,20 +56,20 @@ const StackCardsSection = () => {
         highlight: "Premium Vouchers"
       }
     },
-    {
-      id: 4,
-      title: "Priority Support",
-      icon: "💎",
-      description: "Receive 24/7 priority support for all your queries with dedicated expert assistance.",
-      ctaText: "Contact Us",
-      bgColor: "rgb(247, 92, 208)",
-      leftContent: {
-        title: "Always Here for You",
-        subtitle: "24/7 Premium Support",
-        description: "Get instant help from our dedicated support team. Your success is our priority, anytime you need us.",
-        highlight: "24/7 Available"
-      }
-    }
+    // {
+    //   id: 4,
+    //   title: "Priority Support",
+    //   icon: "💎",
+    //   description: "Receive 24/7 priority support for all your queries with dedicated expert assistance.",
+    //   ctaText: "Contact Us",
+    //   bgColor: "rgb(247, 92, 208)",
+    //   leftContent: {
+    //     title: "Always Here for You",
+    //     subtitle: "24/7 Premium Support",
+    //     description: "Get instant help from our dedicated support team. Your success is our priority, anytime you need us.",
+    //     highlight: "24/7 Available"
+    //   }
+    // }
   ];
 
   useEffect(() => {
